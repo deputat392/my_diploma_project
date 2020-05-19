@@ -1,0 +1,198 @@
+* { box-sizing: border-box; }
+
+body { background-image: url("../img/fon.jpg"); }			
+
+.new {
+	font-family: 'Kurale', sans-serif;
+	position: relative;
+	display: inline-block;
+	font-size: 75%;
+	font-weight: bold;
+	color: #003559;
+	text-decoration: none;
+	padding: .5em 1em;
+	outline: none;
+	border-radius: 6px;
+	background: rgba(255,255,255,.5);
+	transition: .2s ease-in-out;
+	cursor: pointer;
+}
+
+.new:hover {
+	background: rgba(255,255,255,.4);
+	color: gold;
+}
+
+.new:active {
+	top: 1px;
+	background: background: rgba(255,255,255,.5);
+}
+
+.block {
+	width: 900px;
+	margin-left: 225px;
+	font-family: monospace;
+	font-size: 130%;
+	font-weight: bold;
+	color: rgba(255,255,255,.8);
+	text-indent: 20px;
+	text-align: justify;
+}
+
+p {
+	font-family: monospace;
+	font-size: 130%;
+	font-weight: bold;
+	color: rgba(255,255,255,.8);
+	text-indent: 20px;
+}
+
+nav {
+	display: table;
+	margin: 0 auto;
+}
+
+nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+nav a {
+	display: block;
+	text-decoration: none;
+	outline: none;
+}
+
+.topmenu {
+	background: rgba(255,255,255,.5);
+}
+	
+.topmenu > li {
+	display: inline-block;
+	position: relative;
+}
+
+.topmenu > li:first-child { border-left: 0; }
+
+.topmenu > li > a {
+	font-family: 'Exo 2', sans-serif;
+	height: 70px;
+	line-height: 70px;
+	padding: 0 40px;
+	font-weight: bold;
+	color: #003559;
+	text-transform: uppercase;
+	transition: .4s ease-in-out;
+	cursor: pointer;
+}
+
+.down:after {
+	content: "\25BC";
+	margin-left: 8px;
+	font-family: FontAwesome;
+}
+
+.right:after {
+	content: "\25B6";
+	margin-left: 8px;
+	font-family: FontAwesome;
+	font-size: 18px;
+}
+
+.topmenu > li > a:hover,
+.submenu a:hover { color: gold; }
+
+.submenu {
+	background: rgba(255,255,255,.5);
+	position: absolute;
+	left: 0;
+	top: 100%;
+	visibility: hidden;
+	opacity: 0;
+	z-index: 5;
+	width: 165px;
+	transform: scaleY(2);
+	transform-origin: 0 0;
+	transition: .6s ease-in-out;
+}
+
+.submenu li { position: relative; }
+
+.submenu li a {
+	color: #003559;
+	font-size: 13px;
+	text-align: center;
+	line-height: 36px;
+	padding: 0 25px;
+	font-family: 'Kurale', sans-serif;
+	transition: .4s ease-in-out;
+	font-weight: bold;
+	border-bottom: none;
+	cursor: pointer;
+}
+
+.submenu .submenu {
+	position: absolute;
+	top: -1px;
+	left: 100%;
+	transition: .4s ease-in-out;
+}
+
+nav li:hover > .submenu {
+	visibility: visible;
+	opacity: 1;
+	transform: scaleY(1);
+}
+
+.key {
+	background: rgba(255,255,255,.7);
+	font-family: monospace;
+	font-size: 100%;
+	font-weight: bold;
+	color: #003559;
+}
+			
+textarea {
+	background: rgba(255,255,255,.7);
+	font-family: monospace;
+	font-size: 100%;
+	font-weight: bold;
+	color: #003559;
+}
+			
+.inputfile {
+	width: 0px;
+	height: 0px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}
+		
+.inputfile + label {
+	font-family: 'Kurale', sans-serif;
+	position: relative;
+	display: inline-block;
+	font-size: 75%;
+	font-weight: bold;
+	color: #003559;
+	text-decoration: none;
+	padding: .5em 1em;
+	outline: none;
+	border-radius: 6px;
+	background: rgba(255,255,255,.5);
+	transition: .2s ease-in-out;
+	cursor: pointer;
+}
+
+.inputfile:focus + label,
+.inputfile + label:hover {
+	background: rgba(255,255,255,.4);
+	color: gold;
+}
+		
+.inputfile + label:active {
+	top: 1px;
+	background: background: rgba(255,255,255,.5);
+}

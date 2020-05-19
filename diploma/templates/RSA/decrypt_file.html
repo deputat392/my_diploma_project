@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Розшифрування</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}" />
+</head>
+
+<body>
+
+	<a href="{% url 'RSA:home' %}" class="new"><< На головну</a>
+	<nav>
+		<ul class="topmenu">
+			<li><a href="{% url 'RSA:RSA' %}">Про RSA</a></li>
+			<li><a href="{% url 'RSA:instructions' %}">Інструкції</a></li>
+			<li><a class="down">Шифрування</a>
+				<ul class="submenu">
+					<li><a href="{% url 'RSA:encrypt' %}">Текст</a></li>
+					<li><a href="{% url 'RSA:encrypt_file' %}">Файл</a></li>
+				</ul>
+			</li>
+			<li><a class="down">Розшифрування</a>
+				<ul class="submenu">
+					<li><a href="{% url 'RSA:decrypt' %}">Текст</a></li>
+					<li><a href="{% url 'RSA:decrypt_file' %}">Файл</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<br><br>
+	
+	<form action="{% url 'RSA:decrypt_file_data' %}" enctype="multipart/form-data" method="POST" onkeydown="if (event.keyCode == 13) this.submit ()">
+
+		{% csrf_token %}
+	
+		<p style="margin-left: 300px">Ключ:	<input type="number" class="key" name="key" required></p>
+		<p style="margin-left: 300px">Значення модуля:	<input type="number" class="key" name="prod" required> &nbsp&nbsp&nbsp
+		<input type="file" required class="inputfile" id="file" name="file" data-multiple-caption="Вибрано {count} файли" multiple="" />
+		<label for="file"><span>Вибрати файл...</span></label></p>
+		<p style="margin-left: 754px; font-size: 10px;">[*допустимі розширення файлів: .docx]</p><br>
+		<p style="margin-left: 300px"><input type="submit" class="new" value="Розшифрувати"></p>
+	
+	</form>
+
+	<br>
+	
+	{% if request.session.res4 %}
+		
+		<p style="margin-left: 300px">Скачати файл:	<a href="{% url 'RSA:download_dec_file' %}" class="new" download>decrypt.docx</a></p>
+	
+	{% endif %}
+	
+	<br><br>
+	<script src="{% static 'js/1.js' %}"></script>
+	
+</body>
+
+</html>

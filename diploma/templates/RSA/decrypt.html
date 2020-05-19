@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+{% load static %}
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Розшифрування</title>
+	<link rel="stylesheet" type="text/css" href="{% static 'css/all.css' %}" />
+</head>
+
+<body>
+
+	<a href="{% url 'RSA:home' %}" class="new"><< На головну</a>
+	<nav>
+		<ul class="topmenu">
+			<li><a href="{% url 'RSA:RSA' %}">Про RSA</a></li>
+			<li><a href="{% url 'RSA:instructions' %}">Інструкції</a></li>
+			<li><a class="down">Шифрування</a>
+				<ul class="submenu">
+					<li><a href="{% url 'RSA:encrypt' %}">Текст</a></li>
+					<li><a href="{% url 'RSA:encrypt_file' %}">Файл</a></li>
+				</ul>
+			</li>
+			<li><a class="down">Розшифрування</a>
+				<ul class="submenu">
+					<li><a href="{% url 'RSA:decrypt' %}">Текст</a></li>
+					<li><a href="{% url 'RSA:decrypt_file' %}">Файл</a></li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+
+	<br><br>
+	
+	<form action="{% url 'RSA:decrypt_data' %}" method="POST" onkeydown="if (event.keyCode == 13) this.submit ()">
+
+		{% csrf_token %}
+	
+		<p style="margin-left: 300px">Ключ:	<input type="number" class="key" min="1" name="key" required></p>
+		<p style="margin-left: 300px">Значення модуля:	<input type="number" class="key" min="1" name="prod" required></p>
+		<br>
+		<p style="margin-left: 300px">Текст:</p>
+		<p style="margin-left: 300px"><textarea name="text" placeholder="1-10000 знаків" cols="75" rows="10" required></textarea></p>
+		<p style="margin-left: 580px;"><input type="submit" class="new" value="Розшифрувати"></p>
+	
+	</form>
+	
+	{% if request.session.res3 %}
+	
+		<p style="margin-left: 300px">Розшифрований текст:</p>
+		<p style="margin-left: 300px"><textarea style="cursor: text" cols="75" rows="10" disabled>{{ request.session.res3 }}</textarea></p>
+		<p style="margin-left: 702px">Скачати файлом:	<a href="{% url 'RSA:download_dec_file' %}" class="new" download>decrypt.docx</a></p>
+	
+	{% endif %}
+	
+	<br><br>
+	<script src="{% static 'js/1.js' %}"></script>
+	
+</body>
+
+</html>
